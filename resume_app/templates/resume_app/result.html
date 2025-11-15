@@ -1,0 +1,53 @@
+{% extends 'resume_app/base.html' %}
+
+{% block content %}
+<div class="card p-5 shadow-lg mx-auto" style="max-width:800px;">
+  <h2 class="text-center mb-4">AI Analysis Result</h2>
+  {% if feedback %}
+    <div class="mb-3">
+      <h5>Overall Summary</h5>
+      <p>{{ feedback.overall_summary }}</p>
+
+      <h5>Key Strengths</h5>
+      <ul>
+        {% for item in feedback.key_strengths %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+
+      <h5>Weaknesses / Missing Elements</h5>
+      <ul>
+        {% for item in feedback.weaknesses %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+
+      <h5>Suggestions for Improvement</h5>
+      <ul>
+        {% for item in feedback.suggestions %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+
+      <h5>ATS Optimization Tips</h5>
+      <ul>
+        {% for item in feedback.ats_tips %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+
+      <h5>Suggested Skills / Keywords</h5>
+      <ul>
+        {% for item in feedback.skills %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <p>No feedback available.</p>
+  {% endif %}
+  <div class="text-center mt-4">
+    <a href="{% url 'home' %}" class="btn btn-secondary">← Return to Upload</a>
+  </div>
+</div>
+{% endblock %}
